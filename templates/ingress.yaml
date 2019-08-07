@@ -1,0 +1,38 @@
+{{- if .Values.ingress.enabled }}
+{{- $serviceName := include "kubernetes-ingress-info.fullname" . -}}
+{{- $servicePort := .Values.service.port -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "kubernetes-ingress-info.fullname" . }}
+  labels:
+{{ include "kubernetes-ingress-info.labels" . | indent 4 }}
+{{- if .Values.ingress.labels -}}
+{{- with .Values.ingress.labels }}
+  {{- toYaml . | trim | nindent 4 }}
+{{- end }}
+{{- end }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | trim | nindent 4 }}
+  {{- end }}
+spec:
+  rules:
+  {{- range .Values.ingress.hosts }}
+    - host: {{ .name | quote }}
+      http:
+        paths:
+          - path: {{ default "/" .path | quote }}
+            backend:
+              serviceName: {{ $serviceName }}
+              servicePort: {{ $servicePort }}
+  {{- end }}
+  tls:
+  {{- range .Values.ingress.hosts }}
+  {{- if .tls }}
+  - hosts:
+    - {{ .name }}
+    secretName: {{ .tlsSecret }}
+  {{- end }}
+  {{- end }}
+{{- end }}

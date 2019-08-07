@@ -1,0 +1,15 @@
+{{- if .Values.rbac.create }}
+apiVersion: rbac.authorization.k8s.io/{{ .Values.rbac.apiVersion }}
+kind: ClusterRole
+metadata:
+  name: {{ template "kubernetes-ingress-info.fullname" . }}
+  labels:
+{{ include "kubernetes-ingress-info.labels" . | indent 4 }}
+rules:
+- apiGroups:
+  - extensions
+  resources:
+  - ingresses
+  verbs:
+  - list
+{{- end }}
