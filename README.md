@@ -4,12 +4,21 @@ Helm chart for [kubernetes-ingress-info](https://github.com/bitsofinfo/kubernete
 
 ## Usage
 
+### Add repo
+
+    helm repo add boarder981-k8s-ingress-info https://raw.githubusercontent.com/boarder981/k8s-ingress-info/master/repo
+
+    helm repo update
+
+### Install
+
 Example using Traefik for the ingress controller
 
     helm install \
     --name kubernetes-ingress-info \
     --namespace my-namespace \
-    . \
+    boarder981-k8s-ingress-info/k8s-ingress-info \
+    --version 0.1.0 \
     --set rbac.create=true \
     --set loadConfigMode=cluster \
     --set databaseCache.enabled=true \
