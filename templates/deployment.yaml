@@ -54,6 +54,10 @@ spec:
             {{- end }}
             - "--listen-port"
             - {{ .Values.listenPort | quote }}
+            {{- if .Values.hostMatchHeaderName }}
+            - "--host-match-on-header"
+            - {{ .Values.hostMatchHeaderName | quote }}
+            {{- end }}
             {{- if .Values.databaseCache.enabled }}
             - "--enable-cache"
             {{- if .Values.databaseCache.ttl }}

@@ -9,7 +9,7 @@
 
 image:
   repository: bitsofinfo/kubernetes-ingress-info
-  tag: "1.0.3"     # Required
+  tag: "1.0.6"     # Required
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -49,6 +49,10 @@ labelSelectorExcludes: []
 ## fetch ingresses from ALL namespaces by default
 ##
 namespaceScope: []
+
+## name of header used to match host
+##
+hostMatchHeaderName: ""
 
 ## port the app listens on
 ##
