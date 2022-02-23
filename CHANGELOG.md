@@ -1,3 +1,7 @@
+## 0.3.1
+
+* Fix clusterrole apiGroups to include `networking.k8s.io` instead of `extensions`
+
 ## 0.3.0
 
 * Convert ingress template to apiVersion `networking.k8s.io/v1`

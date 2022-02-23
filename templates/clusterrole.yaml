@@ -7,7 +7,7 @@ metadata:
 {{ include "kubernetes-ingress-info.labels" . | indent 4 }}
 rules:
 - apiGroups:
-  - extensions
+  - networking.k8s.io
   resources:
   - ingresses
   verbs:

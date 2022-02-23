@@ -3,7 +3,19 @@ entries:
   k8s-ingress-info:
   - apiVersion: v1
     appVersion: 1.0.7
-    created: "2022-02-23T12:38:05.008667-05:00"
+    created: "2022-02-23T15:36:05.152368-05:00"
+    description: kubernetes-ingress-info provides a REST service to determine the
+      existence of a Kubernetes Ingress host
+    digest: 462f399c37cea758a1fcfb37a183caa41406104a6a9349ec109696e449dcf8a6
+    name: k8s-ingress-info
+    sources:
+    - https://github.com/bitsofinfo/kubernetes-ingress-info
+    urls:
+    - charts/k8s-ingress-info-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v1
+    appVersion: 1.0.7
+    created: "2022-02-23T15:36:05.151179-05:00"
     description: kubernetes-ingress-info provides a REST service to determine the
       existence of a Kubernetes Ingress host
     digest: b5a7a82f4b026e06499d1fcbe48e9ef2fcc815103a332944b6f977fdac31f1b5
@@ -15,7 +27,7 @@ entries:
     version: 0.3.0
   - apiVersion: v1
     appVersion: 1.0.6
-    created: "2022-02-23T12:38:05.007247-05:00"
+    created: "2022-02-23T15:36:05.149826-05:00"
     description: kubernetes-ingress-info provides a REST service to determine the
       existence of a Kubernetes Ingress host
     digest: 632a828c1ef1cfc19e437c670263e2aa44475b5127690ba2e6dac69dfe234b06
@@ -27,7 +39,7 @@ entries:
     version: 0.2.0
   - apiVersion: v1
     appVersion: 1.0.3
-    created: "2022-02-23T12:38:05.00079-05:00"
+    created: "2022-02-23T15:36:05.147488-05:00"
     description: kubernetes-ingress-info provides a REST service to determine the
       existence of a Kubernetes Ingress host
     digest: b566505b686b9078242b7a9c549569977fecba112994f3d477fa44d9849b8b9e
@@ -37,4 +49,4 @@ entries:
     urls:
     - charts/k8s-ingress-info-0.1.0.tgz
     version: 0.1.0
-generated: "2022-02-23T12:38:04.994139-05:00"
+generated: "2022-02-23T15:36:05.144658-05:00"
