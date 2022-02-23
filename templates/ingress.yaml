@@ -1,7 +1,7 @@
 {{- if .Values.ingress.enabled }}
 {{- $serviceName := include "kubernetes-ingress-info.fullname" . -}}
 {{- $servicePort := .Values.service.port -}}
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ template "kubernetes-ingress-info.fullname" . }}
@@ -18,21 +18,20 @@ metadata:
   {{- end }}
 spec:
   rules:
-  {{- range .Values.ingress.hosts }}
-    - host: {{ .name | quote }}
+    - host: {{ .Values.ingress.host.name | quote }}
       http:
         paths:
-          - path: {{ default "/" .path | quote }}
-            backend:
-              serviceName: {{ $serviceName }}
-              servicePort: {{ $servicePort }}
-  {{- end }}
+          - backend:
+              service:
+                name: {{ $serviceName }}
+                port:
+                  number: {{ $servicePort }}
+            path: {{ default "/" .Values.ingress.host.path | quote }}
+            pathType: {{ .Values.ingress.host.pathType }}
+  {{- if .Values.ingress.host.tls }}
   tls:
-  {{- range .Values.ingress.hosts }}
-  {{- if .tls }}
-  - hosts:
-    - {{ .name }}
-    secretName: {{ .tlsSecret }}
-  {{- end }}
+    - hosts:
+        - {{ .Values.ingress.host.name }}
+      secretName: {{ .Values.ingress.host.tlsSecret }}
   {{- end }}
 {{- end }}

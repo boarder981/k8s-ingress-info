@@ -9,7 +9,7 @@
 
 image:
   repository: bitsofinfo/kubernetes-ingress-info
-  tag: "1.0.6"     # Required
+  tag: "1.0.7"     # Required
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -159,11 +159,12 @@ ingress:
   annotations: {}
   ## set like this `--set ingress.labels."labelname"=value`
   labels: {}
-  hosts:
-    - name: k8-ingress-info-test.local
-      path: /
-      tls: false
-      tlsSecret: ""
+  host:
+    name: k8-ingress-info-test.local
+    path: /
+    pathType: ImplementationSpecific
+    tls: false
+    tlsSecret: ""
 
 ## RBAC parameteres
 ## https://kubernetes.io/docs/reference/access-authn-authz/rbac/
